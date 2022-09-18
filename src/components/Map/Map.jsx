@@ -10,6 +10,7 @@ import mapStyles from './mapStyles';
 const Map = ({setCoordinates, setBounds, coordinates, places,setchildClicked,weatherData}) => {
     const classes = useStyles();
     const isMobile = useMediaQuery('(min-width:600px)');
+    console.log(weatherData);
 
     return (
         <div className={classes.mapContainer}>
@@ -51,11 +52,13 @@ const Map = ({setCoordinates, setBounds, coordinates, places,setchildClicked,wea
                     </div>
                 ))}
                 
-                {weatherData?.list?.map((data,i) => (
-                    <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
-                        <img src={`https://www.weatherbit.io/img/${data?.weather?.icon}.png `} alt={data.weather.description} height='70px'/>
+                {weatherData?.data?.map((data,i) => {   
+                    return(
+                    <div key={i} lat={data.lat} lng={data.lon}>
+                        <img src={`https://www.weatherbit.io/static/img/icons/${data?.weather?.icon}.png`} alt={data.weather.description} height='70px'/>
+                        {data.weather.description}
                     </div>
-                ))}
+                )})}
             </GoogleMapReact>
         </div>
     );

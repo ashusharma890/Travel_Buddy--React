@@ -31,6 +31,7 @@ import axios from "axios";
               'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com'
             }
           });
+          // console.log(data);
           return data;
           
       } catch (error) {
